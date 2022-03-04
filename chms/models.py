@@ -1,8 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 
 # Create your models here.
 class Patient(models.Model):
+    pid=models.AutoField(primary_key=True)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     dob = models.DateField(null=True)
@@ -32,6 +34,7 @@ class Patient(models.Model):
         return self.fname+" "+self.lname
 
 class Doctor(models.Model):
+    did=models.AutoField(primary_key=True)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     gender=(
@@ -49,6 +52,7 @@ class Doctor(models.Model):
 
 
 class Bed(models.Model):
+    bid=models.AutoField(primary_key=True)
     rtype=(
            (1,'PRIVATE ROOM'),
            (2,'EMEREGENCY WARD'),
@@ -59,17 +63,20 @@ class Bed(models.Model):
     room_type=MultiSelectField(choices=rtype)
 
 
-    def __str__():
+    def __str__(self):
         return bed_number
 
 class Appointment(models.Model):
-    patient = models.ForeignKey("Patient", on_delete=models.CASCADE)
-    doctor = models.ForeignKey("Doctor", on_delete=models.CASCADE)
+    pid = models.ForeignKey("Patient", on_delete=models.CASCADE)
+    did = models.ForeignKey("Doctor", on_delete=models.CASCADE)
+    aid=models.AutoField(primary_key=True)
     app_date=models.DateTimeField(null=False)
     app_time=models.DateTimeField(null=False)
     desc=models.TextField()
 
+
 class Shift(models.Model):
-    doctor = models.ForeignKey("Doctor", on_delete=models.CASCADE)
+    sid=models.AutoField(primary_key=True)
+    did = models.ForeignKey("Doctor", on_delete=models.CASCADE)
     sdate=models.DateTimeField(null=False)
     stime=models.DateTimeField()
