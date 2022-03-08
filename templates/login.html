@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login">
+    <div class="login_form">
+         <div class="button_box" id="login_form">
+             <div class="card_front">
+             <h2>LOGIN</h2>
+             <form>
+                <input type="email" class="input-box" placeholder="Emaail Id" required>
+                <input type="text" class="input-box" placeholder="Enter Password" required>
+                <button type="submit" class="submit-btn">Submit</button>
+                <input type="checkbox"><span>Remember Me</span>
+             </form>
+             <button type="button" name="btn" onclick="openRegister()">Register as patient</button>
+             <button type="button" name="btn" onclick="openRegister()">Register as Doctor</button>
+             <a href="">Forgot Password</a>
+             </div>
+             <div class=card_back1>
+                <h2>Register as Patients</h2>
+                <form>
+                    <input type="text" class="input-box" placeholder="Name" required>
+                   <input type="email" class="input-box" placeholder="Email Id" required>
+                   <input type="password" class="input-box" placeholder="Enter Password" required>
+                   <button type="submit" class="submit-btn">Submit</button>
+                   <input type="checkbox"><span>Remember Me</span>
+                </form>
+                <button type="button" name="btn" onclick="openLogin()">I've an account</button>
+                <a href="">Forgot Password</a>
+                </div>
+                <div class=card_back2>
+                    <h2>Register as Doctor</h2>
+                    <form>
+                        <input type="text" class="input-box" placeholder="Name" required>
+                       <input type="email" class="input-box" placeholder="Email Id" required>
+                       <input type="password" class="input-box" placeholder="Enter Password" required>
+                       <button type="submit" class="submit-btn">Submit</button>
+                       <input type="checkbox"><span>Remember Me</span>
+                    </form>
+                    <button type="button" name="btn" onclick="openLogin()">I've an account</button>
+                    <a href="">Forgot Password</a>
+                    </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+<div class="feedback">
+    <h2>Write a review</h2>
+    <div class="feedback_form">
+        <form name="submit-googlesheet">
+            <input type="text" name="Name" placeholder="Name"><br>
+            <input type="email" name="Email" placeholder="Email Id"><br>
+            <input type="number" name="Number" placeholder="Contact Number"><br>
+            <textarea rows="5" cols="7"name="Review"  placeholder="Write a review"></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+<div class="footer_logo">
+    <a href="index.html"><img src="1stoplogo.png" width="150"></a>
+</div>
+<div class="pages">
+    <h3>Pages</h3>
+    <a href="about.html">About Us</a>|
+    <a href="service.html">Services</a>|
+    <a href="blog.html">Blogs</a>|
+    <a href="login.html">Login</a>|
+    <a href="login.html">Sign Up</a>
+</div>
+<div class="doc">
+    <h3>Documentd</h3>
+    <a href="">Privacy Policy</a>|
+    <a href="">Terms Of Use</a>|
+    <a href="">Refund Policy</a>
+</div>
+<div class="social">
+    <h3>Follow Us</h3>
+    <a href="https://www.facebook.com/1Stopai-102490171820303" target=_black><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/company/1stop-ai" target=_black><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+    <a href="https://www.instagram.com/1stop.ai" target=_black><i class="fa fa-instagram" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/onestopai" target=_black><i class="fa fa-twitter" aria-hidden="true"></i></a>
+</div>
+<div class="contact">
+    <h3>Contact Us</h3>
+    <a href="https://api.WhatsApp.com/send?phone=+919838623258" target=_black><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+    <a href="tel:+919838723258"><i class="fa fa-phone" aria-hidden="true"></i></a>
+    <a href="mailto: support@1stop.ai"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+</div>
+<hr>
+<p>Copyright &copy; 2021 1stop All rights reserved</p>
+</footer>
+
+<script>
+var login_form= document.getElementById("login_form");
+
+function openRegister() {
+    login_form.style.transform="rotateY(-180deg)";
+}
+function openRegister() {
+    login_form.style.transform="rotateY(-180deg)";
+}
+function openLogin() {
+    login_form.style.transform="rotateY(0deg)";
+}
+</script>
+
+<script type="text/JavaScript"> 
+const scriptURL = 'https://script.google.com/macros/s/AKfycby3d-kGog1UjjT3wRKWA2Np71HJtNNWFGzS1aVNuAVf8mg7itc6rY6tGaVdl533lMA/exec'
+        const form = document.forms['submit-googlesheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks you for the review....! Have a nice day ahead....!"))
+            .catch(error => console.error('Error!', error.message))
+        })
+      
+</script>
+
+</body>
+
+</html>
+{% endblock %}

@@ -24,18 +24,23 @@
         <div class="nav_side">
             <a href="login.html">Login</a> |
             <a href="register.html">Register</a> |
-            <a href="about.html ">About Us</a> |
+            <a href="{% url 'about'%} ">About Us</a> |
         </div>
     </nav>
 
-    <div class="main">
-        <div class="main_content">
-            <h3> Stay Home, Stay Safe. </h3>
-        <p>Your health and life are our priority!</p>
+ 
+    <div class="feedback">
+        <h2>Write a review</h2>
+        <div class="feedback_form">
+            <form name="submit-googlesheet">
+                <input type="text" name="Name" placeholder="Name"><br>
+                <input type="email" name="Email" placeholder="Email Id"><br>
+                <input type="number" name="Number" placeholder="Contact Number"><br>
+                <textarea rows="5" cols="7"name="Review"  placeholder="Write a review"></textarea><br>
+                <button type="submit">Submit</button>
+            </form>
         </div>
-    </div>
-  </div>
-
+    </div>    
 
 <footer>
     <div class="footer_logo">
