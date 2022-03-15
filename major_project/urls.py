@@ -21,7 +21,8 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.HomePage.as_view(),name='home'),
-    path('chms/',include('chms.urls')),
+    path('chms/',include('chms.urls',namespace="chms")),
+    path('about/',views.AboutView.as_view(),name="about"),
     path('test/',views.TestPage.as_view(),name='test'),
     path('thanks/',views.ThanksPage.as_view(),name='thanks'),
 ]
