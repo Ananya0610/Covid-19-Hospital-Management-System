@@ -1,10 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
-
+from django.contrib import auth
 # Create your models here.
+
+class User(auth.models.User,auth.models.PermissionsMixin):
+    def __str__(self):
+        return "@{}".format(self.username)
+
 class Patient(models.Model):
-    pid=models.AutoField(primary_key=True)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     dob = models.DateField(null=True)
@@ -34,7 +38,6 @@ class Patient(models.Model):
         return self.fname+" "+self.lname
 
 class Doctor(models.Model):
-    did=models.AutoField(primary_key=True)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     gender=(
@@ -50,9 +53,8 @@ class Doctor(models.Model):
     def __str__(self):
         return self.fname+" "+self.lname
 
-
 class Bed(models.Model):
-    bid=models.AutoField(primary_key=True)
+    patient= models.ForeignKey("Patient", on_delete=models.CASCADE)
     rtype=(
            (1,'PRIVATE ROOM'),
            (2,'EMEREGENCY WARD'),
@@ -67,16 +69,14 @@ class Bed(models.Model):
         return bed_number
 
 class Appointment(models.Model):
-    pid = models.ForeignKey("Patient", on_delete=models.CASCADE)
-    did = models.ForeignKey("Doctor", on_delete=models.CASCADE)
-    aid=models.AutoField(primary_key=True)
+    patient = models.ForeignKey("Patient", on_delete=models.CASCADE)
+    doctor= models.ForeignKey("Doctor", on_delete=models.CASCADE)
     app_date=models.DateTimeField(null=False)
     app_time=models.DateTimeField(null=False)
     desc=models.TextField()
 
 
 class Shift(models.Model):
-    sid=models.AutoField(primary_key=True)
-    did = models.ForeignKey("Doctor", on_delete=models.CASCADE)
+    doctor = models.ForeignKey("Doctor", on_delete=models.CASCADE)
     sdate=models.DateTimeField(null=False)
     stime=models.DateTimeField()
