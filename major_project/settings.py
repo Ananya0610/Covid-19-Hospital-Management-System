@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'multiselectfield',
     'chms',
-    'users'
 ]
 
 MIDDLEWARE = [
