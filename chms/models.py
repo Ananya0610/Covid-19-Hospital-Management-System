@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User=get_user_model()
 from multiselectfield import MultiSelectField
 from django.contrib import auth
 # Create your models here.
@@ -9,6 +11,7 @@ class User(auth.models.User,auth.models.PermissionsMixin):
         return "@{}".format(self.username)
 
 class Patient(models.Model):
+    patient = models.OneToOneField(User,related_name='patient',on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     dob = models.DateField(null=True)
@@ -38,6 +41,7 @@ class Patient(models.Model):
         return self.fname+" "+self.lname
 
 class Doctor(models.Model):
+    doctor = models.OneToOneField(User,related_name='doctor' ,on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     gender=(

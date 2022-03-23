@@ -106,17 +106,17 @@ function openLogin() {
 }
 </script>
 
-<script type="text/JavaScript"> 
+<script type="text/JavaScript">
 const scriptURL = 'https://script.google.com/macros/s/AKfycby3d-kGog1UjjT3wRKWA2Np71HJtNNWFGzS1aVNuAVf8mg7itc6rY6tGaVdl533lMA/exec'
         const form = document.forms['submit-googlesheet']
-      
+
         form.addEventListener('submit', e => {
           e.preventDefault()
           fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => alert("Thanks you for the review....! Have a nice day ahead....!"))
             .catch(error => console.error('Error!', error.message))
         })
-      
+
 </script>
 
 </body>
