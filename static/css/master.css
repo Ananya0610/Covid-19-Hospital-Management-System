@@ -1,4 +1,3 @@
-
 body {
     margin: 0px;
     padding: 0px;
@@ -7,7 +6,7 @@ body {
 }
 
 .nav{
-    background-color:#189AB4; /*rgba(42, 90, 194, 0.836)*/
+    background-color: rgb(8, 84, 172);
     z-index: 9;
     padding-left: 50px;
     padding-right: 50px;
@@ -45,7 +44,7 @@ body {
     color: black;
     font-weight: bold;
     font-family: cosmic, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -57,14 +56,7 @@ body {
     transition: all Is ease;
 }
 
-.main{
-    background-image: url('background.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 80vh;
-}
+
 
 .main .main_content{
     padding-top: 100px;
@@ -72,168 +64,173 @@ body {
     margin-right: 10%;
 }
 
-.main .main_content h3{
-    color:rgba(0, 0, 0, 0.966) ;
-    font-size: 20px;
+.main .main_content h1{
+    color: black;
+    font-size: 40px;
     font-family: cosmic, sans-serif;
     font-weight: bolder;
-    text-align: left;
+    text-align: center;
     line-height: 20px;
 }
 
-.main .main_content p{
-    color: rgba(0, 0, 0, 0.966);
-    font-size: 15px;
+.main .main_content h1 span{
+    font-size: 25px;
     opacity: 0.9;
-    font-weight: lighter;
+    font-weight: bolder;
     line-height: 20px;
 }
 
 
 
-.about us {
-    padding: 100px;
-    margin-left: 10%;
-    margin-right: 10%;
+
+
+
+
+.keypoint{
+    padding: 50px;
 }
 
-.about us h2{
+.keypoint h2{
     color: black;
     font-size: 35px;
-    text-align: right;
+    text-align: center;
+    padding: 10px;
+}
+
+.keypoint .key_container{
+    display: flex;
+}
+
+.keypoint .key_container .key_content{
+    width: 40%;
+    padding: 20px;
+    float:left;
+}
+
+.keypoint .key_container .key_content li{
+    margin: 10px;
+    padding: 10px;
+    border-left: 2px solid orange;
+    color: black;
+    text-align: left;
+    font-family: cosmic, sans-serif;
+    box-shadow: 0px 3px 50px 0px rgba(0,0,0,.15);
+}
+
+.keypoint .key_container .key_img{
+   width: 50%;
+   float: right;
+   margin-left: 50px;
+}
+
+.keypoint .key_container .key_img img{
+    width: 100%;
+}
+
+.team {
+    padding: 50px;
+}
+
+.team h2 {
+    color: black;
+    font-size: 35px;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.team .team_container{
+    display: flex;
+}
+
+.team .team_container .team_video {
+    width: 50%;
     padding: 20px;
 }
 
+.team .team_container .team_video iframe {
+    width: 100%;
+    border: 10px solid orange;
+}
 
 
+.team .team_container .team_content {
+    width: 40%;
+    padding: 20px;
+    margin-left: 50px;
+}
 
-
-
-
-.login {
-    padding:100px;
-    background: rgba(6, 99, 206, 0.452);
-    color: #fff;
+.team .team_container .team_content p {
+    padding: 10px;
+    font-size: 15px;
     font-family: cosmic, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.login_form {
-    width: 380px;
-    height: 500px;
-    box-shadow: 0 0 40px 20px rgba(0,0,0,0.26);
-    perspective: 1000px;
-}
 
-.button_box
- {
-     width:100%;
-     height: 100%;
-     position: relative;
-     transform-style: preserve-3d;
-     transition: transform 1s;
- }
-
- .card_front, .card_back {
-     position: absolute;
-     width: 100%;
-     height:100%;
-    background-position: center;
-    background-image: linear-gradient(rgba(0,0,100,0.8), rgba(0,0,100,0.8)),url(Image.jpg);
-    background-size: cover;
-    padding: 55px;
-    box-sizing: border-box;
-    backface-visibility: hidden;
- }
-
- .card_back {
-    transform: rotateY(180deg);
-}
-
- .login_form h2 {
-     font-weight: normal;
-     font-size: 25px;
-     text-align: center;
-     margin-bottom: 20px;
- }
-
- .input-box {
-     width: 100%;
-     background: transparent;
-     border: 1px solid #fff;
-     margin: 6px 0;
-     height: 32px;
-     border-radius: 20px;
-     padding: 0 10px;
-     box-sizing: border-box;
-     outline: none;
-     text-align: center;
-     color: white;
- }
-
- ::placeholder {
-     color: white;
-     font-size: 12px;
- }
-
- button {
-     width: 100%;
-     background: transparent;
-     border: 1px solid white;
-     margin: 35px 0  10px;
-     height: 32px;
-     font-size: 12px;
-     border-radius: 20px;
-     padding: 0 10px;
-     box-sizing: border-box;
-     outline: none;
-     color: white;
-     cursor: pointer;
- }
-
- .submit-btn {
-    position: relative;
-}
-
-.submit-btn::after {
-    content: '\27a4';
-    color: #333;
-    line-height: 32px;
-    font-size: 18px;
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    background: white;
-    position: absolute;
-    right: -1px;
-    top: -1px;
-}
-
-span {
-    span: 15px;
-    margin-left: 10px;
-    margin-bottom: 60px;
-}
-
-.login_form .btn {
-    margin-top: 80px;
-}
-
-.login_form a{
-    color: white;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    font-size: 13px;
-    margin-top: 15px;
-}
-
-footer{
-    background-color: #189AB4;
+.about_us {
     padding: 50px;
 }
+
+.about_us h2 {
+
+    color: orange;
+    font-size: 35px;
+    text-align: center;
+    padding: 10px;
+    font-family: cosmic, sans-serif;
+    text-transform: uppercase;
+}
+
+.about_us p {
+    padding: 10px;
+    font-size: 15px;
+    font-family: cosmic, sans-serif;
+    text-align: center;
+    line-height: 20px;
+}
+
+.contact_us {
+    padding: 100px;
+}
+
+.contact_us h2 {
+    color: orange;
+    font-size: 35px;
+    text-align: center;
+    padding: 10px;
+    font-family: cosmic, sans-serif;
+    text-transform: uppercase;
+}
+
+.contact_us .g_map{
+    border: 10px solid purple;
+}
+
+.contact_us .contact_content {
+    padding: 10px;
+}
+
+.contact_us .contact_content p {
+    padding: 10px;
+    font-size: 15px;
+    font-family: cosmic, sans-serif;
+    line-height: 20px;
+}
+
+
+
+
+
+footer{
+    background-color: rgb(8, 84, 172);
+    padding: 50px;
+}
+
+footer .footer_logo img{
+    width: 30%;
+    float: left;
+    margin-left: 50px;
+ }
 
 
 footer .pages{
@@ -259,6 +256,56 @@ footer .pages a:hover{
     color: white;
 }
 
+footer .doc{
+    text-align: center;
+}
+
+footer .doc h3{
+    color: black;
+    font-size: 20px;
+    font-family: cosmic, sans-serif;
+    padding: 5px;
+}
+
+footer .doc a{
+    text-decoration: none;
+    margin: 10px;
+    color: orange;
+    font-size: 15px;
+    font-family: cosmic, sans-serif;
+}
+
+footer .doc a:hover{
+    color: white;
+}
+
+
+
+footer .contact{
+    text-align: center;
+}
+
+footer .contact h3{
+    color: black;
+    font-size: 20px;
+    font-family: cosmic, sans-serif;
+    padding: 5px;
+}
+
+
+
+footer .contact a{
+    text-decoration: none;
+     font-size: 30px;
+     color: orange;
+     margin: 10px;
+}
+
+footer .contact a:hover{
+    color: black;
+}
+
 footer p{
+    color: black;
     text-align: center;
 }

@@ -41,7 +41,7 @@ class Patient(models.Model):
         return self.fname+" "+self.lname
 
 class Doctor(models.Model):
-    doctor = models.OneToOneField(User,related_name='doctor' ,on_delete=models.CASCADE)
+    doctor = models.OneToOneField(User,related_name='doctor',on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     gender=(
@@ -58,29 +58,27 @@ class Doctor(models.Model):
         return self.fname+" "+self.lname
 
 class Bed(models.Model):
-    patient= models.ForeignKey("Patient", on_delete=models.CASCADE)
+    bed_number=models.CharField(max_length=50)
+    patient= models.ForeignKey("Patient", on_delete=models.CASCADE,null=True)
     rtype=(
            (1,'PRIVATE ROOM'),
            (2,'EMEREGENCY WARD'),
            (3,'COVID-19 WARD'),
            (4,'3-BED SHARED'),
     )
-    bed_number=models.CharField(max_length=50)
     room_type=MultiSelectField(choices=rtype)
-
-
     def __str__(self):
         return bed_number
 
 class Appointment(models.Model):
-    patient = models.ForeignKey("Patient", on_delete=models.CASCADE)
-    doctor= models.ForeignKey("Doctor", on_delete=models.CASCADE)
+    patient = models.ForeignKey("Patient", on_delete=models.CASCADE,null=True)
+    doctor= models.ForeignKey("Doctor", on_delete=models.CASCADE,null=True)
     app_date=models.DateTimeField(null=False)
     app_time=models.DateTimeField(null=False)
     desc=models.TextField()
 
 
 class Shift(models.Model):
-    doctor = models.ForeignKey("Doctor", on_delete=models.CASCADE)
+    doctor = models.ForeignKey("Doctor",null=True, on_delete=models.CASCADE)
     sdate=models.DateTimeField(null=False)
     stime=models.DateTimeField()

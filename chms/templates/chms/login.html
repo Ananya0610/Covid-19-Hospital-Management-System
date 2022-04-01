@@ -1,13 +1,18 @@
-{% extends "base.html" %}
 {% load bootstrap3 %}
-
-{% block content %}
-<div class="container">
-    <h1>Login</h1>
-    <form action="{% url 'chms:user_login' %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Login" class="btn btn-default">
-    </form>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Login Form </h1>
+        <form action="{% url 'chms:login' %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" value="Login" class="btn btn-default">
+        </form>
+    </div>
+  </body>
+</html>
