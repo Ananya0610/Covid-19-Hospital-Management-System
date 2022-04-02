@@ -2,24 +2,32 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from chms.models import Patient,Doctor,Appointment,Bed
+from chms.models import Patient,Doctor,Appointment,Bed,Shift
 class PatientCreateForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = '__all__'
+        fields = ['fname','lname','dob','age','blood_grp','doctor','gnd','ph_no','email_id','vacc_sts']
 
+class PatientUpdateForm(forms.ModelForm):
+    model=Patient
+    fields= ['fname','lname','dob','age','blood_grp','doctor','gnd','ph_no','email_id','vacc_sts']
 
-class DoctorCreate(forms.ModelForm):
+class DoctorCreateForm(forms.ModelForm):
     class Meta:
         model = Doctor
-        fields = '__all__'
+        fields = ['fname','lname','gnd','ph_no','email_id','specialist']
 
-class AppointmentCreate(forms.ModelForm):
+class AppointmentCreateForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = '__all__'
+        fields = ['patient','doctor','app_date','app_time','desc']
 
-class BedCreate(forms.ModelForm):
+class BedCreateForm(forms.ModelForm):
     class Meta:
         model = Bed
-        fields = '__all__'
+        fields = ['patient','room_type','bed_number']
+
+class ShiftsCreateForm(forms.ModelForm):
+    class Meta:
+        model = Shift
+        fields = ['doctor','sdate','stime']
