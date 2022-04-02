@@ -1,38 +1,30 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
-
-     <title>{% block title%} {% endblock title %} |  Hospital Mangement</title>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
-integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-
-    <link rel="stylesheet"  href="{ "css/master.css" }">
-
-     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <title>Hospital Management</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+    integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet"  href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
     <nav class="nav nav_top">
         <div class="logo">
-            <a href="#"><img src="{ "images/CovidLogo.jpeg"}" width="150"></a>
+            <a href="{% url 'home' %}"><img src="{% static "images/CovidLogo.jpeg" %}" width="150"></a>
         </div>
         <div class="nav_side">
-            <a href="/about">About Us</a>
-            <a href="/contact">Contacts</a>
-            <a href="/login">Login</a>
+
+
+           <a href="{% url 'about'%} "> About Us</a> |
+           <a href="{% url 'chms:login' %}"> Login</a> |
+            <a href="{% url 'chms:register' %}"> Register</a> |
+            <a href="{% url 'contact' %}"> Contact us</a>
         </div>
     </nav>
-
-
-
     <div class="main">
         <div class="main_content">
             <h1>WELCOME TO Covid-19 HOSPITAL MANAGEMENT SYSTEM!<br>
@@ -42,7 +34,7 @@ integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUb
 
         <style>
           .main{
-            background-image: url( "images/background.png" );
+            background-image: url( {% static "images\background.png" %} );
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -51,8 +43,6 @@ integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUb
           }
         </style>
     </div>
-
-
     <div class="keypoint">
         <h2>OUR KEY HIGHLIGHTS</h2>
         <div class="key_container">
@@ -66,22 +56,17 @@ integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUb
                 <li>Efficient and Empathetic Nursing Staff.</li>
                 <li>Timely Communication.</li>
             </div>
-
             <div class="key_img">
-                <img src="{"images/image1.jpeg" }">
+                <img src="{% static "images/image1.jpeg" %}">
             </div>
         </div>
     </div>
-
     <hr>
-
     <div class="team">
         <h2>COVID-19 GUIDELINES</h2>
         <div class="team_container">
             <div class="team_video">
-                <iframe width="560" height="315" src="<iframe width="560" height="315" src="https://www.youtube.com/embed/xVu_I6WCsto"
-                 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-                 gyroscope; picture-in-picture" allowfullscreen></iframe>" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/-Fdo_HT3X80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="team_content">
                 <p><b>Here are some Guidelines:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -96,22 +81,19 @@ integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUb
             </div>
         </div>
     </div>
-
-
-
 <footer>
     <div class="footer_logo">
-        <a href="#"><img src="{ "images/CovidLogo.jpeg" }" width="150"></a>
+        <a href="#"><img src="{% static "images/CovidLogo.jpeg" %}" width="150"></a>
     </div>
     <div class="pages">
         <h3>Pages</h3>
-        <a href="about.html">About Us</a>|
-        <a href="contact.html">Contacts</a>
-        <a href="login.html">Login</a>|
-        <a href="login.html">Sign Up</a>
+
+        <a href="{% url 'about'%} ">About Us</a> |
+        <a href="{% url 'chms:login' %}">Login</a> |
+        <a href="{% url 'chms:register' %}">Register</a> |
+        <a href="{% url 'contact' %}">Contact Us</a>
+
     </div>
-
-
     <div class="contact">
         <h3>Contact Us</h3>
         <a href="https://api.WhatsApp.com/send?phone=+919838623258" target=_black><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
@@ -119,7 +101,7 @@ integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUb
         <a href="mailto: support@abcd.ai"><i class="fa fa-envelope" aria-hidden="true"></i></a>
     </div>
     <hr>
-    <p>Copyright &copy; 2021 1stop All rights reserved</p>
+    <p>Copyright &copy; 2022 Covid-19 Hospital Management System</p>
 </footer>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -128,9 +110,5 @@ sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossor
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="
 sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
-
-
 </body>
-
 </html>

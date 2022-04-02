@@ -10,9 +10,3 @@ class AboutView(TemplateView):
 
 class ContactView(TemplateView):
     template_name='contactUs.html'
-
-class TestPage(TemplateView):
-    template_name='test.html'
-
-class ThanksPage(TemplateView):
-    template_name='thanks.html'
