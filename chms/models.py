@@ -11,7 +11,7 @@ class User(auth.models.User,auth.models.PermissionsMixin):
         return "@{}".format(self.username)
 
 class Patient(models.Model):
-    patient = models.OneToOneField(User,related_name='patient',on_delete=models.CASCADE)
+    #user = models.OneToOneField(User,primary_key=True,null=True,related_name='patient',on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     dob = models.DateField(null=True)
@@ -41,7 +41,7 @@ class Patient(models.Model):
         return self.fname+" "+self.lname
 
 class Doctor(models.Model):
-    doctor = models.OneToOneField(User,related_name='doctor',on_delete=models.CASCADE)
+    #user = models.OneToOneField(User,null=True,primary_key=True,related_name='doctor',on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     gender=(

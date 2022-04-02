@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'multiselectfield',
     'chms',
-    'bootstrap3',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [

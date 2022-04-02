@@ -33,19 +33,19 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='bed',
             name='patient',
-            field=models.ForeignKey(default=django.utils.timezone.now, on_delete=django.db.models.deletion.CASCADE, to='chms.patient'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='chms.patient'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='doctor',
             name='doctor',
-            field=models.OneToOneField(default=django.utils.timezone.now, on_delete=django.db.models.deletion.CASCADE, related_name='doctor', to='chms.user'),
+            field=models.OneToOneField(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='doctor', to='chms.user'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='patient',
             name='patient',
-            field=models.OneToOneField(default=django.utils.timezone.now, on_delete=django.db.models.deletion.CASCADE, related_name='patient', to='chms.user'),
+            field=models.OneToOneField(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='patient', to='chms.user'),
             preserve_default=False,
         ),
     ]
