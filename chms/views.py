@@ -1,32 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth.forms import UserCreationForm
 from chms.models import Patient,Doctor,Appointment,Bed
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,UpdateView,FormView
-from chms.forms import PatientCreateForm,DoctorCreateForm
+from .forms import PatientCreateForm,DoctorCreateForm
 from django.urls import reverse_lazy
 
 def PatientCreate(request):
     context={}
+    #form_class=PatientCreateForm
+    #form = form_class(request.POST or None)
     if request.method == 'POST':
-        form=PatientCreateForm(request.POST)
+        form=PatientCreateForm(request.POST or None)
         if form.is_valid():
             patient=form.save()
             patient.save()
+            #username=form.cleaned_data['username']
+            #password=form.cleaned_data['password']
+            #user=authenticate(username=username,password=password)
+            messages.success(request, 'account created successfully')
+            return redirect('login')
     else:
-        form=PatientCreateForm()
-        context['form']=form
-        return render(request,"chms/register.html", context)
-    #def get(self,reqeust,*args,**kwargs):
-    #    form=self.form_class()
-
-    #def post(self,request,*args,**kwargs):
-    #    form=PatientCreateForm(request.POST)
-    #    if form.is_valid():
-    #        patient=form.save()
-    #        patient.save()
-    #    success_url=reverse_lazy('login')
-    #    return render(request,'self.template_name',{'form':form})
+       form=PatientCreateForm()
+    context['form']=form
+    return render(request,"chms/register.html", context)
 
 class PatientProfile(LoginRequiredMixin,TemplateView):
     pass

@@ -11,9 +11,11 @@ class User(auth.models.User,auth.models.PermissionsMixin):
         return "@{}".format(self.username)
 
 class Patient(models.Model):
-    #user = models.OneToOneField(User,primary_key=True,null=True,related_name='patient',on_delete=models.CASCADE)
+    #user = models.OneToOneField(User,primary_key=True,related_name='patient',on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
+    #username=models.CharField(max_length=50,null=True)
+    username = models.CharField(max_length=100)
     dob = models.DateField(null=True)
     age=models.PositiveIntegerField(null=True, blank=True)
     bld_grp=(
@@ -34,7 +36,7 @@ class Patient(models.Model):
         )
     gnd=MultiSelectField(choices=gender)
     ph_no=models.CharField(max_length=15,null=False, blank=False, unique=True)
-    email_id=models.CharField(max_length=50, unique=True)
+    email_id=models.EmailField(max_length=50, unique=True)
     vacc_sts=models.CharField(max_length=20)
 
     def __str__(self):
