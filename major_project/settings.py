@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'major_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR/'db.sqlite3'),
     }
 }
 
@@ -124,7 +124,9 @@ STATIC_URL = '/static/'
 STATIC_DIR=Path(BASE_DIR /"static")
 STATICFILES_DIRS = [STATIC_DIR,]
 
-LOGIN_URL="/chms/templates/chms/login.html"
+LOGIN_URL="chms:login"
+LOGIN_REDIRECT_URL ='chms:patient_dashboard'
+LOGOUT_REDIRECT_URL='thanks'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

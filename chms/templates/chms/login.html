@@ -1,4 +1,3 @@
-
 {% load bootstrap5 %}
 <!DOCTYPE html>
 {% load static %}
@@ -22,6 +21,13 @@
       <div class="logo">
           <a href="{% url 'home' %}"><img src="{% static "images/CovidLogo.jpeg" %}" width="150"></a>
       </div>
+      <select name="Desig" id="Desig">
+        <option value="login">Login as:</option>
+        <option value="Patient">Patient</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Admin">Admin</option>
+      </select>|
+
       <div class="nav_side">
          <a href="{% url 'about'%} ">About Us</a> |
          <a href="{% url 'chms:login' %}">Login</a> |

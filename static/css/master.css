@@ -168,10 +168,10 @@ body {
 
 
 .about_us {
-    padding: 50px;
+    padding: 100px;
 }
 
-.about_us h2 {
+.about_us h1 {
 
     color: orange;
     font-size: 35px;
@@ -217,9 +217,66 @@ body {
     line-height: 20px;
 }
 
+.container {
+   padding: 100px;
+}
+.feedback {
+    padding : 100px;
+}
 
+.feedback h1 {
+    color: black
+    font-size: 35px;
+    text-align: center;
+    padding: 10px;
+    font-family: cosmic, sans-serif;
+    text-transform: uppercase;
+}
 
+.feedback .feedback_form {
+    text-align: center;
+}
 
+.feedback .feedback_form form {
+    padding: 20px;
+}
+
+.feedback .feedback_form form input {
+    color: black;
+    width: 45%;
+    margin: 10px;
+    padding: 13px;
+    outline: none;
+    border: none;
+}
+
+.feedback .feedback_form form textarea {
+    width: 45%;
+    margin: 10px;
+    padding: 13px;
+    outline: none;
+    border: none;
+    font-family: cosmic, sans-serif;
+}
+
+.feedback .feedback_form form button {
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: #2874A6 ;
+    color: white ;
+    border-radius: 10px;
+}
+
+.feedback .feedback_form form button:hover {
+    background-color: black;
+    color: orange;
+    border: none;
+    border-bottom: 4px solid orange;
+    transition: 0.5s;
+}
 
 footer{
     background-color: rgb(8, 84, 172);
@@ -227,11 +284,8 @@ footer{
 }
 
 footer .footer_logo img{
-    width: 30%;
-    float: left;
-    margin-left: 50px;
- }
-
+    background-color: #99A3A4;
+}
 
 footer .pages{
     text-align: center;

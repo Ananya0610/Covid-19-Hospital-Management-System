@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Appointment Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sign Up</h1>
+      <form  enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+        <input type="submit" class="btn btn-default" value="Create Appointment">
+      </form>
+    </div>
+  </body>
+</html>

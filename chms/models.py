@@ -1,19 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
-User=get_user_model()
 from multiselectfield import MultiSelectField
 from django.contrib import auth
+from django.urls import reverse
 # Create your models here.
 
-class User(auth.models.User,auth.models.PermissionsMixin):
-    def __str__(self):
-        return "@{}".format(self.username)
+#from django.contrib.auth import get_user_model
+#User=get_user_model()
+
+#class User(auth.models.User,auth.models.PermissionsMixin):
+#    def __str__(self):
+#        return "@{}".format(self.username)
 
 class Patient(models.Model):
-    #user = models.OneToOneField(User,primary_key=True,null=True,related_name='patient',on_delete=models.CASCADE)
+    user = models.OneToOneField(User,null=True,related_name='patient',on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
+    username=models.CharField(max_length=20,null=True)
     dob = models.DateField(null=True)
     age=models.PositiveIntegerField(null=True, blank=True)
     bld_grp=(
@@ -34,14 +37,21 @@ class Patient(models.Model):
         )
     gnd=MultiSelectField(choices=gender)
     ph_no=models.CharField(max_length=15,null=False, blank=False, unique=True)
-    email_id=models.CharField(max_length=50, unique=True)
-    vacc_sts=models.CharField(max_length=20)
+    email_id=models.EmailField(max_length=50, unique=True)
+    sts=(
+        (1,'First Dose'),
+        (2,'Second Dose'),
+        )
+    vacc_sts=MultiSelectField(choices=sts)
 
     def __str__(self):
         return self.fname+" "+self.lname
 
+    def get_absolute_url(self):
+        return reverse('posts:single',kwargs={'username':self.user.username,'pk':self.pk})
+
 class Doctor(models.Model):
-    #user = models.OneToOneField(User,null=True,primary_key=True,related_name='doctor',on_delete=models.CASCADE)
+    user = models.OneToOneField(User,null=True,related_name='doctor',on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
     gender=(

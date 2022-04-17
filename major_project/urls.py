@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.HomePage.as_view(),name='home'),
     path('chms/',include('chms.urls',namespace="chms")),
+    path('chms/',include('django.contrib.auth.urls')),
     path('about/',views.AboutView.as_view(),name='about'),
     path('contactUs/',views.ContactView.as_view(),name='contact'),
 ]

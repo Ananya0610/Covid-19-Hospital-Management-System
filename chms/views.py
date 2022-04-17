@@ -1,32 +1,52 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth.decorators import login_required
 from chms.models import Patient,Doctor,Appointment,Bed
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,UpdateView,FormView
-from chms.forms import PatientCreateForm,DoctorCreateForm
+from .forms import PatientCreateForm,DoctorCreateForm
 from django.urls import reverse_lazy
+
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
+class TestPage(TemplateView):
+    template_name='chms/test.html'
 
 def PatientCreate(request):
     context={}
     if request.method == 'POST':
         form=PatientCreateForm(request.POST)
         if form.is_valid():
-            patient=form.save()
-            patient.save()
+            form.save(commit=False)
+            username=form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(request,username=username, password=password)
+            user=User.objects.create_user(username=username,password=password)
+            user.save()
+            form.save()
+            messages.success(request,'account created successfully')
+            return redirect('login')
     else:
-        form=PatientCreateForm()
-        context['form']=form
-        return render(request,"chms/register.html", context)
-    #def get(self,reqeust,*args,**kwargs):
-    #    form=self.form_class()
+       form=PatientCreateForm()
+    context['form']=form
+    return render(request,"chms/register.html", context)
 
-    #def post(self,request,*args,**kwargs):
-    #    form=PatientCreateForm(request.POST)
-    #    if form.is_valid():
-    #        patient=form.save()
-    #        patient.save()
-    #    success_url=reverse_lazy('login')
-    #    return render(request,'self.template_name',{'form':form})
+@login_required(login_url='patient_login')
+def patient_dashboard(request):
+    #pk=self.kwargs.get('pk')
+    #patient=Patient.objects.get(pk)
+    #doctor=models.Doctor.objects.get(user_id=request.user.id)
+    return render(request,'chms/patient_dashboard.html')
+
+class PatientUpdateView(LoginRequiredMixin,UpdateView):
+    #login_url = '/login/dashboard/'
+    redirect_field_name = '/patient_dashboard.html'
+    form_class = PatientCreateForm
+    model = Patient
+
 
 class PatientProfile(LoginRequiredMixin,TemplateView):
     pass
@@ -49,7 +69,21 @@ class DoctorCreate(CreateView):
     #        form.save(commit=True)
     #        redirect_field_name = 'chms/login.html'
 
-class AppointmentCreate(LoginRequiredMixin,CreateView):
+@login_required(login_url='login')
+def AppointmentCreate(request):
+    patient=models.Patient.objects.get(user_id=request.user.id)
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST)
+        if form.is_valid():
+            appointment = form.save(commit=False)
+            appointment.save()
+            return HttpResponseRedirect('patient_appointment_detail')
+            return redirect('chms:appointment_detail')
+    else:
+        form = AppointmentForm()
+    return render(request, 'chms/appointment_create.html', {'form': form})
+
+#class AppointmentCreate(LoginRequiredMixin,CreateView):
     pass
     #model=Appointment
     #form = AppointmentCreateForm
