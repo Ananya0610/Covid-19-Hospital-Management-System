@@ -2,8 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from . import models
-
-
+from chms.models import Patient
 class PatientCreateForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
@@ -30,6 +29,7 @@ class DoctorCreateForm(forms.ModelForm):
         fields = ['fname','lname','gnd','ph_no','email_id','specialist']
 
 class AppointmentCreateForm(forms.ModelForm):
+    #patient= forms.ModelMultipleChoiceField(queryset=Patient.objects.all())
     class Meta:
         model = models.Appointment
         fields = ['patient','app_date','app_time','desc']

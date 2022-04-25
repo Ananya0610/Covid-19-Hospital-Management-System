@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +10,7 @@
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="ds.css">
 </head>
+
 <body>
     <div class="container">
         <div class="navbar">
@@ -16,9 +18,16 @@
                 <img style="width: 40px;" src="recycling.png" alt="">
                 <span class="logoname"></span>
             </div>
+
+
+
             <div class="navitem">
                 <div class="lang">
+
                 </div>
+
+
+
             </div>
         </div>
 
@@ -27,19 +36,19 @@
                 <ul>
                     <li class="dashboard">
                         <i class="fa fa-dashcube"></i>
-                        <a href="{% url 'chms:patient_dashboard' %}">Patient Dashboard</a>
+                        <a href="#">Patient Dashboard</a>
                     </li>
                     <li>
                         <i class="fa fa-user"></i>
-                        <a href="{% url 'chms:patient_update' %}">Profile Management</a>
+                        <a href="#">Profile Management</a>
                     </li>
                     <li>
                         <i class="fa fa-calendar"></i>
-                        <a href="#">Appointments</a>
+                        <a href="{% url 'chms:create_appointment' %}">Appointments</a>
                     </li>
                     <li>
                         <i class="fa fa-book"></i>
-                        <a href="#">Booking Bed</a>
+                        <a href="{% url 'chms:create_bed' %}">Booking</a>
                     </li>
 
                     <li>

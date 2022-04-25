@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="centerstage">
+        {% for appointment in appointment_list %}
+            <div class="appointment">
+
+                <h1><a href="{% url 'appointment_detail' pk=appointment.pk %}">{{ appointment.desc }}</a></h1>
+                <div class="date">
+                    <p>Appointment on: {{ appointment.app_date|date:"D M Y"}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+  </body>
+</html>

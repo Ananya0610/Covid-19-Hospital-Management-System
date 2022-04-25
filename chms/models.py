@@ -1,16 +1,18 @@
 from django.db import models
+from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 from django.contrib import auth
 from django.urls import reverse
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
-
 #from django.contrib.auth import get_user_model
 #User=get_user_model()
-
-#class User(auth.models.User,auth.models.PermissionsMixin):
-#    def __str__(self):
-#        return "@{}".format(self.username)
+class User(AbstractUser):
+    is_patient=models.BooleanField(default=False)
+    is_doctor=models.BooleanField(default=False)
+    def __str__(self):
+        return "@{}".format(self.username)
 
 class Patient(models.Model):
     user = models.OneToOneField(User,null=True,related_name='patient',on_delete=models.CASCADE)
@@ -46,9 +48,11 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.fname+" "+self.lname
-
     def get_absolute_url(self):
-        return reverse('posts:single',kwargs={'username':self.user.username,'pk':self.pk})
+        return reverse('chms:patient_dashboard', kwargs={'pk':self.pk})
+    #def get_absolute_url(self):
+    #    return reverse_lazy('patient_dashboard')
+    # redirect(reverse('chms:patient_dashboard',kwargs={"pk":self.pk}))
 
 class Doctor(models.Model):
     user = models.OneToOneField(User,null=True,related_name='doctor',on_delete=models.CASCADE)
@@ -81,10 +85,10 @@ class Bed(models.Model):
         return bed_number
 
 class Appointment(models.Model):
-    patient = models.ForeignKey("Patient", on_delete=models.CASCADE,null=True)
+    patient = models.ForeignKey("Patient",related_name="patient",on_delete=models.CASCADE)
     doctor= models.ForeignKey("Doctor", on_delete=models.CASCADE,null=True)
-    app_date=models.DateTimeField(null=False)
-    app_time=models.DateTimeField(null=False)
+    app_date=models.DateField(null=True)
+    app_time=models.TimeField(null=True)
     desc=models.TextField()
 
 

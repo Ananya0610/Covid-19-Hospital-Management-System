@@ -1,17 +1,24 @@
+{% load bootstrap5 %}
+{% load static %}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Appointment Form</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Sign Up</h1>
-      <form  enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{ form.as_p }}
-        <input type="submit" class="btn btn-default" value="Create Appointment">
-      </form>
-    </div>
-  </body>
+<html>
+<head>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/5f6feb85e1.js"></script>
+    <title>Create Appointment</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind&display=swap">
+</head>
+<body>
+  <h1>Create Appointment</h1>
+  <form action="" method="get" id="form1">
+  <input type="hidden" id="id" value="1">
+  <div id="divTxt"></div>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" value="Submit" class="btn-btn-default" name="submit">
+    <input type="reset" value="Reset" name="reset"></p>
+</form>
+    <script type="text/javascript" src="{% static 'js/master.js' %}"></script>
+</body>
 </html>

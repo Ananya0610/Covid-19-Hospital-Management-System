@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load bootstrap5 %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -33,7 +34,7 @@
       <h1>Sign Up</h1>
       <form  action="{% url 'chms:register' %}" method="POST">
           {% csrf_token %}
-          {{ form.as_p }}
+          {% bootstrap_form form %}
         <input type="submit" class="btn btn-default" value="Sign Up">
       </form>
     </div>

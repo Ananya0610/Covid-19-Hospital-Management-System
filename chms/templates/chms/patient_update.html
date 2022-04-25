@@ -1,0 +1,19 @@
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="main">
+        <!-- Create a Form -->
+        <form action="{% url 'chms:patient_update' patient.pk %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" value="Update">
+        </form>
+        <script>var editor = new MediumEditor('.editable');</script>
+    </div>
+  </body>
+</html>
