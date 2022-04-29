@@ -6,14 +6,14 @@
     <title></title>
   </head>
   <body>
-    <div class="main">
-        <!-- Create a Form -->
-        <form action="{% url 'chms:patient_update' patient.pk %}" method="POST">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <input type="submit" value="Update">
-        </form>
-        <script>var editor = new MediumEditor('.editable');</script>
-    </div>
+      <div class="main">
+          <!-- Create a Form -->
+          <form action="{% url 'chms:patient_update' user.username %}" method="POST">
+              {% csrf_token %}
+              {% bootstrap_form form %}
+              <input type="submit" value="Update">
+          </form>
+          <script>var editor = new MediumEditor('.editable');</script>
+      </div>
   </body>
 </html>

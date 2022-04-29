@@ -1,13 +1,13 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Dashboard</title>
+    <title>Doctor Dashboard</title>
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'css/ds.css' %}">
+    <link rel="stylesheet" href="ds.css">
 </head>
 
 <body>
@@ -17,10 +17,16 @@
                 <img style="width: 40px;" src="recycling.png" alt="">
                 <span class="logoname"></span>
             </div>
+
+
+
             <div class="navitem">
                 <div class="lang">
-                  <h1>WELCOME! Hello, {{ user.username|default:'Guest' }}!</h1>
+
                 </div>
+
+
+
             </div>
         </div>
 
@@ -29,29 +35,26 @@
                 <ul>
                     <li class="dashboard">
                         <i class="fa fa-dashcube"></i>
-                        <a href="{% url 'chms:patient_dashboard' %}">Patient Dashboard</a>
+                        <a href="#">Doctor Dashboard</a>
                     </li>
                     <li>
                         <i class="fa fa-user"></i>
-                        <a href="{% url 'chms:patient_update' user.username %}">Update Profile</a>
+                        <a href="#">Profile Management</a>
                     </li>
                     <li>
                         <i class="fa fa-calendar"></i>
-                        <a href="{% url 'chms:list_appointment' user.username %}">Appointments</a>
+                        <a href="#">Appointments</a>
                     </li>
                     <li>
                         <i class="fa fa-book"></i>
-                        <a href="{% url 'chms:list_bed' user.username %}"> Bed/Room</a>
+                        <a href="#">Booking</a>
                     </li>
 
                     <li>
                         <i class="fa fa-question-circle"></i>
                         <a href="#">Question/Ans</a>
                     </li>
-                    <li>
-                        <i class="fa fa-comments-o"></i>
-                        <a href="#">Feedback</a>
-                    </li>
+
 
                 </ul>
             </div>

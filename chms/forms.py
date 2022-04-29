@@ -6,27 +6,32 @@ from chms.models import Patient
 class PatientCreateForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
-    #assignedDoctor=forms.ModelChoiceField(queryset=models.Doctor.objects.all().filter(),empty_label="Name and Department")
     class Meta:
         model = models.Patient
         fields = ['fname','lname','username','dob','age','blood_grp','gnd','ph_no','email_id','vacc_sts']
 
         def save(self, commit=True):
-            user = super(PatientCreateForm, self).save(commit=False)
+            user = super(PatientCreateForm,self).save(commit=False)
             user.username = self.cleaned_data["username"]
             user.password=self.cleaned_data['password']
             if commit:
                 user.save()
             return user
 
-class PatientUpdateForm(forms.ModelForm):
-    model=models.Patient
-    fields= ['fname','lname','dob','age','blood_grp','doctor','gnd','ph_no','email_id','vacc_sts']
-
 class DoctorCreateForm(forms.ModelForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
     class Meta:
         model = models.Doctor
-        fields = ['fname','lname','gnd','ph_no','email_id','specialist']
+        fields = ['fname','lname','username','gnd','ph_no','email_id','specialist']
+
+        def save(self, commit=True):
+            user = super(DoctorCreateForm, self).save(commit=False)
+            user.username = self.cleaned_data["username"]
+            user.password=self.cleaned_data['password']
+            if commit:
+                user.save()
+            return user
 
 class AppointmentCreateForm(forms.ModelForm):
     #patient= forms.ModelMultipleChoiceField(queryset=Patient.objects.all())
@@ -34,10 +39,25 @@ class AppointmentCreateForm(forms.ModelForm):
         model = models.Appointment
         fields = ['patient','app_date','app_time','desc']
 
+        def save(self, commit=True):
+            appointment = super(AppointmentCreateForm,self).save(commit=False)
+            if commit:
+                appointment.save()
+            return appointment
+
+
 class BedCreateForm(forms.ModelForm):
     class Meta:
         model = models.Bed
-        fields = ['patient','room_type','bed_number']
+        fields = ['bed_number','patient','room_type']
+
+        def save(self, commit=True):
+            bed = super(BedCreateForm, self).save(commit=False)
+            #user.username = self.cleaned_data["username"]
+            #user.password=self.cleaned_data['password']
+            if commit:
+                bed.save()
+            return bed
 
 class ShiftsCreateForm(forms.ModelForm):
     class Meta:

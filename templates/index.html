@@ -2,13 +2,13 @@
 {% load static %}
 <html>
 <head>
-    <title>Hospital Management</title>
+    <title> Hospital Management</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
     integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-    <link rel="stylesheet"  href="{% static 'css/master.css' %}">
+    <link rel="stylesheet"  href="{% static "css/master.css" %}">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -19,21 +19,35 @@
         <div class="nav_side">
 
 
-           <a href="{% url 'about'%} "> About Us</a> |
-           <a href="{% url 'chms:login' %}"> Login</a> |
-            <a href="{% url 'chms:register' %}"> Register</a> |
-            <a href="{% url 'contact' %}"> Contact us</a>
+           <a href="{% url 'about'%} ">About Us</a>
+            <a href="{% url 'contact' %}">Contact us</a>
+            <div class="subnav">
+                <button class="subnavbtn">Register<i class="fa fa-caret-down"></i></button>
+                <div class="subnav-content">
+                  <a href="{% url 'chms:register_patient' %}">Patient</a>
+                  <a href="{% url 'chms:register_doctor' %}">Doctor</a>
+                  <a href="">Admin</a>
+                </div>
+              </div>
+              <div class="subnav">
+                <button class="subnavbtn">Login <i class="fa fa-caret-down"></i></button>
+                <div class="subnav-content">
+                  <a href="{% url 'chms:login' %}">Patient</a>
+                  <a href="{% url 'chms:login' %}">Doctor</a>
+                  <a href=" ">Admin</a>
+              </div>
         </div>
     </nav>
     <div class="main">
         <div class="main_content">
-
+            <h1>WELCOME TO Covid-19 HOSPITAL MANAGEMENT SYSTEM!<br>
+            <span>Quality care rank among the best in Nation!!</span>
             </h1>
         </div>
 
         <style>
           .main{
-            background-image: url( {% static "images\background.png" %} );
+            background-image: url(static "images/background.png" );
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -61,41 +75,130 @@
         </div>
     </div>
     <hr>
+
+    <div class="testi">
+        <h2>OUR SERVICES</h2>
+        <div class="testi_container">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="item_img">
+                        <img src="{% static "images/image1.jfif" %}">
+                    </div>
+                    <div class="item_content">
+                        <h3>Hospital Beds</h3>
+
+                    </div>
+
+                  </div>
+                  <div class="item">
+                        <div class="item_img">
+                            <img src="{% static "images/image2.jpeg" %}">
+                        </div>
+                        <div class="item_content">
+                            <h3>Ventilators</h3>
+
+                        </div>
+                    </div>
+                  <div class="item">
+                        <div class="item_img">
+                            <img src="{% static "images/image3.jpg" %}">
+                        </div>
+                        <div class="item_content">
+                            <h3>Ambulance</h3>
+
+                        </div>
+                   </div>
+                   <div class="item">
+                    <div class="item_img">
+                        <img src="{% static "images/image4.jfif" %}">
+                    </div>
+                    <div class="item_content">
+                        <h3>Test Laboratory</h3>
+
+                    </div>
+                </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+        </div>
+    </div>
+
+    <hr>
+
     <div class="team">
         <h2>COVID-19 GUIDELINES</h2>
         <div class="team_container">
             <div class="team_video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/-Fdo_HT3X80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="<iframe width="560" height="315" src="https://www.youtube.com/embed/xVu_I6WCsto"
+                 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                 gyroscope; picture-in-picture" allowfullscreen></iframe>" allowfullscreen></iframe>
             </div>
             <div class="team_content">
-                <p><b>Here are some Guidelines:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                     enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                     voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                     mollit anim id est laborum.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                      eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                      aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                       dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
-                       uaerat voluptatem.
+                <p><b>Here are some Guidelines:</b><br>1.Get Vaccinated and stay up to date on your COVID-19 vaccines.<br>2.Wear a mask.<br>
+                    3.Stay 6 feet away from others<br>4.Avoid poorly ventilated spaces and crowds.<br>5.Test to prevent spread to others
+                    <br>6.Wash your hands often with soap and water for at least 20 seconds especially after you have been in
+                    a public place, or after blowing your nose, coughing, or sneezing.<br>7.If soap and water are not readily available,
+                    use a hand sanitizer that contains at least 60% alcohol. Cover all surfaces of your hands and rub them together until
+                    they feel dry.
                     </p>
             </div>
         </div>
     </div>
+
+    <div class="feedback">
+        <h2>Write a review</h2>
+        <div class="feedback_form">
+            <form name="submit-feedback">
+                <input type="text" name="Name" placeholder="Name"><br>
+                <input type="email" name="Email" placeholder="Email Id"><br>
+                <textarea rows="8" cols="7"name="Review"  placeholder="Write a review"></textarea><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <style>
+            .feedback{
+              background-image: url(static "images/imagebkg.jpg");
+              background-size: cover;
+            }
+          </style>
+
+    </div>
+
 <footer>
     <div class="footer_logo">
-        <a href="#"><img src="{% static "images/CovidLogo.jpeg" %}" width="150"></a>
+        <a href="{% url 'home' %}"><img src="{% static "images/CovidLogo.jpeg" %}" width="150"></a>
     </div>
     <div class="pages">
         <h3>Pages</h3>
 
         <a href="{% url 'about'%} ">About Us</a> |
-        <a href="{% url 'chms:login' %}">Login</a> |
-        <a href="{% url 'chms:register' %}">Register</a> |
-        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="{% url 'login' %}">Login</a> |
+        <a href="{% url 'chms:register_patient' %}">Register</a> |
+        <a href="{% url 'contact' %}">Contact us</a>
 
     </div>
     <div class="contact">
         <h3>Contact Us</h3>
-        <a href="https://api.WhatsApp.com/send?phone=+919838623258" target=_black><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://api.WhatsApp.com/send?phone=+919838623258" target=_blank><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
         <a href="tel:+919838723258"><i class="fa fa-phone" aria-hidden="true"></i></a>
         <a href="mailto: support@abcd.ai"><i class="fa fa-envelope" aria-hidden="true"></i></a>
     </div>
@@ -109,5 +212,18 @@ sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossor
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="
 sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script type="text/JavaScript">
+     const scriptURL = 'https://script.google.com/macros/s/AKfycby3d-kGog1UjjT3wRKWA2Np71HJtNNWFGzS1aVNuAVf8mg7itc6rY6tGaVdl533lMA/exec'
+    const form = document.forms['submit-feedback']
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks you for the review....! Have a nice day ahead....!"))
+                .catch(error => console.error('Error!', error.message))
+            })
+
+</script>
+
 </body>
 </html>

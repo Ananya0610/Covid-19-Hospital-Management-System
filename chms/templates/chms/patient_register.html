@@ -4,7 +4,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Bed Booking Form</title>
+    <title>Registration Form</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -31,11 +31,11 @@
       </nav>
 
     <div class="container">
-      <h1>Appointment Form</h1>
-      <form action="{% url 'chms:create_bed' user.username %}" method="POST">
+      <h1>Sign Up</h1>
+      <form  action="{% url 'chms:register_patient' %}" method="POST">
           {% csrf_token %}
           {% bootstrap_form form %}
-        <input type="submit" class="btn btn-default" value="Create">
+        <input type="submit" class="btn btn-default" value="Sign Up">
       </form>
     </div>
 

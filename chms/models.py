@@ -8,11 +8,12 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 #from django.contrib.auth import get_user_model
 #User=get_user_model()
-class User(AbstractUser):
-    is_patient=models.BooleanField(default=False)
-    is_doctor=models.BooleanField(default=False)
-    def __str__(self):
-        return "@{}".format(self.username)
+#class User(AbstractUser):
+#    is_patient=models.BooleanField(default=False)
+#    is_doctor=models.BooleanField(default=False)
+
+#    def __str__(self):
+#        return "@{}".format(self.username)
 
 class Patient(models.Model):
     user = models.OneToOneField(User,null=True,related_name='patient',on_delete=models.CASCADE)
@@ -50,14 +51,12 @@ class Patient(models.Model):
         return self.fname+" "+self.lname
     def get_absolute_url(self):
         return reverse('chms:patient_dashboard', kwargs={'pk':self.pk})
-    #def get_absolute_url(self):
-    #    return reverse_lazy('patient_dashboard')
-    # redirect(reverse('chms:patient_dashboard',kwargs={"pk":self.pk}))
 
 class Doctor(models.Model):
     user = models.OneToOneField(User,null=True,related_name='doctor',on_delete=models.CASCADE)
     fname=models.CharField(max_length=20)
     lname=models.CharField(max_length=20)
+    username=models.CharField(max_length=20,null=True)
     gender=(
         (1,'FEMALE'),
         (2,'MALE'),
@@ -81,15 +80,19 @@ class Bed(models.Model):
            (4,'3-BED SHARED'),
     )
     room_type=MultiSelectField(choices=rtype)
+
     def __str__(self):
-        return bed_number
+        return self.bed_number
 
 class Appointment(models.Model):
     patient = models.ForeignKey("Patient",related_name="patient",on_delete=models.CASCADE)
-    doctor= models.ForeignKey("Doctor", on_delete=models.CASCADE,null=True)
+    doctor= models.ForeignKey("Doctor",related_name='doctor', on_delete=models.CASCADE,null=True)
     app_date=models.DateField(null=True)
     app_time=models.TimeField(null=True)
     desc=models.TextField()
+
+    def get_absolute_url(self):
+        return reverse("chms:appointment_list",kwargs={'pk':self.pk})
 
 
 class Shift(models.Model):
